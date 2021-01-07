@@ -1,0 +1,31 @@
+schema {
+  query: Query
+}
+
+type Query {
+  option(id: ID!): Option
+  options(first: Int = 20, skip: Int = 0): [Option]
+
+  article(id: ID!): Article
+  articles(first: Int = 20, skip: Int = 0): [Article]
+}
+
+type Option {
+  optionID: ID!
+  optionName: String!
+  categoryName: String!
+  optionType: String!
+  optionValue: String!
+}
+
+type Article {
+  articleID: ID!
+  title: String!
+  teaser: String
+  user: User
+}
+
+type User {
+  userID: ID!
+  username: String!
+}

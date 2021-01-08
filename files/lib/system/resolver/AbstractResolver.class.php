@@ -1,12 +1,28 @@
 <?php
 namespace graphql\system\resolver;
 
+use wcf\system\event\EventHandler;
+
 abstract class AbstractResolver implements IResolver
 {
+    /**
+     * name of the resolver
+     *
+     * @var String
+     */
     protected static $name;
+
+    /**
+     * list of field resolvers
+     *
+     * @var array
+     */
     protected $fieldResolvers = [];
 
-    public static function getName()
+    /**
+     * @inheritDoc
+     */
+    public static function getName(): String
     {
         if (!empty(static::$name)) {
             return ucfirst(static::$name);
@@ -16,9 +32,18 @@ abstract class AbstractResolver implements IResolver
         }
     }
 
-    public function getFieldResolvers()
+    /**
+     * @inheritDoc
+     */
+    public function __construct()
     {
-        return $this->fieldResolvers;
+        // call beforeSetFieldResolvers event
+        EventHandler::getInstance()->fireAction($this, 'beforeSetFieldResolvers');
+
+        $this->setFieldResolvers();
+
+        // call afterSetFieldResolvers event
+        EventHandler::getInstance()->fireAction($this, 'afterSetFieldResolvers');
     }
 
     /**
@@ -33,8 +58,19 @@ abstract class AbstractResolver implements IResolver
         }
     }
 
-    public function appendResolver($resolver): void
+    /**
+     * @inheritDoc
+     */
+    public function appendFieldResolvers($fieldResolvers = []): void
     {
-        $this->fieldResolvers = array_merge($this->fieldResolvers, (new $resolver)->getFieldResolvers());
+        $this->fieldResolvers = array_merge($this->fieldResolvers, $fieldResolvers);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getFieldResolvers(): array
+    {
+        return $this->fieldResolvers;
     }
 }

@@ -1,21 +1,26 @@
 <?php
 namespace graphql\system\resolver;
 
+use wcf\data\user\User;
+
 class ArticleResolver extends AbstractResolver
 {
 
-    public function __construct()
+    /**
+     * @inheritDoc
+     */
+    public function setFieldResolvers(): void
     {
         $this->fieldResolvers = array_merge($this->fieldResolvers, [
-            'title' => function ($value) {
-                return $value->getTitle();
+            'user' => function ($value) {
+                return new User($value->getUserID());
             },
             'teaser' => function ($value) {
                 return $value->getTeaser();
             },
-            // 'user' => function ($value) {
-            //     return new User($value->getUserID());
-            // },
+            'title' => function ($value) {
+                return $value->getTitle();
+            },
         ]);
     }
 }

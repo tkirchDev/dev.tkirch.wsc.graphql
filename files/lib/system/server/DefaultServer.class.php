@@ -7,11 +7,11 @@ use GraphQL\Utils\BuildSchema;
 use GraphQL\Utils\SchemaExtender;
 use GraphQL\Utils\SchemaPrinter;
 
-error_reporting(E_ALL);
-ini_set('display_errors', 'On');
-
 class DefaultServer extends AbstractServer
 {
+    /**
+     * @inheritDoc
+     */
     public function buildSchema(): Schema
     {
         $schema = BuildSchema::build('
@@ -27,7 +27,6 @@ class DefaultServer extends AbstractServer
             $documentNode = Parser::parse($fileContent);
             $schema = SchemaExtender::extend($schema, $documentNode);
         }
-
         $schema = BuildSchema::build(SchemaPrinter::doPrint($schema), $this->typeConfigDecorator);
 
         return $schema;

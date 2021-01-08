@@ -26,7 +26,7 @@ abstract class AbstractServer implements IServer
         $this->registerResolvers([
             'Query' => \graphql\system\resolver\QueryResolver::class,
             'Article' => \graphql\system\resolver\ArticleResolver::class,
-            //'User' => \graphql\system\resolver\UserResolver::class,
+            'User' => \graphql\system\resolver\UserResolver::class,
         ]);
 
         // call beforeFieldResolvers event
@@ -88,11 +88,7 @@ abstract class AbstractServer implements IServer
             $this->config = ServerConfig::create();
             $this->config->setSchema($this->buildSchema());
             $this->config->setQueryBatching(true);
-
-            return;
-            $this->config->setValidationRules([
-                DocumentValidator::addRule(new QueryDepth(1)),
-            ]);
+            DocumentValidator::addRule(new QueryDepth(2));
         }
     }
 }

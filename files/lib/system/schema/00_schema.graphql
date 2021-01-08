@@ -1,5 +1,6 @@
 extend type Query {
   language(id: ID!): Language
+  languages(first: Int = 20, skip: Int = 0): [Language]
   user(id: ID!): User
   users(first: Int = 20, skip: Int = 0): [User]
 }

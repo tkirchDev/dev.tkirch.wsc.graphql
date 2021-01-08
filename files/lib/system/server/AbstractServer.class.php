@@ -88,7 +88,7 @@ abstract class AbstractServer implements IServer
             $this->config = ServerConfig::create();
             $this->config->setSchema($this->buildSchema());
             $this->config->setQueryBatching(true);
-            DocumentValidator::addRule(new QueryDepth(2));
+            DocumentValidator::addRule(new QueryDepth(11));
         }
     }
 }

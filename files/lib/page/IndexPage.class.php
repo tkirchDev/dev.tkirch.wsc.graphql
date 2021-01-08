@@ -1,16 +1,13 @@
 <?php
 namespace graphql\page;
 
-require_once WCF_DIR . 'lib/system/api/graphql-php/autoload.php';
 use GraphQL\GraphQL;
+use GraphQL\Language\Parser;
 use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
+use graphql\system\server\DefaultServer;
 use GraphQL\Utils\BuildSchema;
-use wcf\data\article\Article;
-use wcf\data\article\ArticleList;
-use wcf\data\option\Option;
-use wcf\data\option\OptionList;
-use wcf\data\user\User;
+use GraphQL\Utils\SchemaExtender;
 use wcf\page\AbstractPage;
 
 class IndexPage extends AbstractPage
@@ -20,67 +17,35 @@ class IndexPage extends AbstractPage
      */
     public function show()
     {
-        $contents = file_get_contents(WCF_DIR . 'graphql/lib/system/graphql/schema/schema.graphql');
 
+        $server = new DefaultServer();
+
+        $server->execute();
+        exit();
+
+        // get type config decorator
         $typeConfigDecorator = function ($typeConfig, $typeDefinitionNode) {
-            switch ($typeConfig['name']) {
-                case 'Query':
-                    $typeConfig['resolveField'] = function ($value, $args, $context, $info) {
-                        switch ($info->fieldName) {
-
-                            case 'option':
-                                return new Option($args['id']);
-                                break;
-
-                            case 'options':
-                                $list = new OptionList();
-                                $list->sqlOffset = $args['skip'];
-                                $list->sqlLimit = $args['first'];
-                                $list->readObjects();
-
-                                return $list->getObjects();
-
-                                break;
-                            case 'article':
-                                return new Article($args['id']);
-                                break;
-
-                            case 'articles':
-                                $list = new ArticleList();
-                                $list->sqlOffset = $args['skip'];
-                                $list->sqlLimit = $args['first'];
-                                $list->readObjects();
-
-                                return $list->getObjects();
-
-                                break;
-                        }
-
-                    };
-                    break;
-                case 'Article':
-                    $typeConfig['resolveField'] = function ($value, $args, $context, $info) {
-                        switch ($info->fieldName) {
-                            case 'title':
-                                return $value->getTitle();
-                                break;
-                            case 'teaser':
-                                return $value->getTeaser();
-                                break;
-                            case 'user':
-                                return new User($value->getUserID());
-                                break;
-                            default:
-                                return $value->{$info->fieldName};
-                                break;
-                        }
-                    };
-                    break;
+            if (class_exists('\graphql\system\resolver\\' . $typeConfig['name'] . 'Resolver')) {
+                $resolverClass = '\graphql\system\resolver\\' . $typeConfig['name'] . 'Resolver';
+                $typeConfig['resolveField'] = new $resolverClass;
             }
             return $typeConfig;
-
         };
-        $schema = BuildSchema::build($contents, $typeConfigDecorator);
+
+        // build schema
+        $schema = BuildSchema::build('
+            schema {
+                query: Query
+            }
+            type Query', $typeConfigDecorator);
+
+        //get schema files and extend schema
+        $files = glob(WCF_DIR . 'graphql/lib/system/schema/*.graphql');
+        natsort($files);
+        foreach (array_map('file_get_contents', $files) as $fileContent) {
+            $documentNode = Parser::parse($fileContent);
+            $schema = SchemaExtender::extend($schema, $documentNode);
+        }
 
         try {
             //server configuration

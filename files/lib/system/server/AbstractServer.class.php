@@ -3,6 +3,8 @@ namespace graphql\system\server;
 
 use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
+use GraphQL\Validator\DocumentValidator;
+use GraphQL\Validator\Rules\QueryDepth;
 use wcf\system\event\EventHandler;
 
 abstract class AbstractServer implements IServer
@@ -23,7 +25,9 @@ abstract class AbstractServer implements IServer
         //set resolvers
         $this->registerResolvers([
             'Query' => \graphql\system\resolver\QueryResolver::class,
+            'QueryArticle' => \graphql\system\resolver\QueryArticleResolver::class,
             'Article' => \graphql\system\resolver\ArticleResolver::class,
+            'User' => \graphql\system\resolver\UserResolver::class,
         ]);
 
         // call registerResolvers event
@@ -48,7 +52,12 @@ abstract class AbstractServer implements IServer
         if (!isset($this->config)) {
             $this->config = ServerConfig::create();
             $this->config->setSchema($this->buildSchema());
-            //$this->config->setQueryBatching(true);
+            $this->config->setQueryBatching(true);
+
+            return;
+            $this->config->setValidationRules([
+                DocumentValidator::addRule(new QueryDepth(1)),
+            ]);
         }
     }
 
@@ -57,12 +66,12 @@ abstract class AbstractServer implements IServer
      */
     public function execute(): void
     {
-        #try {
-        $server = new StandardServer($this->config);
-        $server->handleRequest();
-        #} catch (\Exception $e) {
-        #    StandardServer::send500Error($e);
-        #}
+        try {
+            $server = new StandardServer($this->config);
+            $server->handleRequest();
+        } catch (\Exception $e) {
+            StandardServer::send500Error($e);
+        }
     }
 
     /**
@@ -71,7 +80,7 @@ abstract class AbstractServer implements IServer
     public function registerResolver($resolver): void
     {
         if (array_key_exists($resolver::getName(), $this->resolvers)) {
-
+            #$this->resolvers[$resolver::getName()]->appendResolver($resolver);
         } else {
             $this->resolvers[$resolver::getName()] = $resolver;
         }

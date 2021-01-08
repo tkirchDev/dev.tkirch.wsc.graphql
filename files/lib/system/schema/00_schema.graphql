@@ -1,11 +1,10 @@
 extend type Query {
-  article(id: ID!): Article
-  articles(first: Int = 20, skip: Int = 0): [Article]
+  user(id: ID!): User
+  users(first: Int = 20, skip: Int = 0): [User]
 }
 
-type Article {
-  articleID: ID!
-  title: String!
-  teaser: String
-  #user: User
+type User {
+  userID: ID!
+  username: String!
+  email: String!
 }

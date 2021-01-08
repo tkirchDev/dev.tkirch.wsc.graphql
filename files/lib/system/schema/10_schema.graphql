@@ -1,0 +1,11 @@
+extend type Query {
+  article(id: ID!): Article
+  articles(first: Int = 20, skip: Int = 0): [Article]
+}
+
+type Article {
+  articleID: ID!
+  title: String!
+  teaser: String
+  user: User
+}

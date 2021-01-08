@@ -3,6 +3,7 @@ namespace graphql\system\resolver;
 
 use wcf\data\article\Article;
 use wcf\data\article\ArticleList;
+use wcf\data\language\Language;
 use wcf\data\user\User;
 use wcf\data\user\UserList;
 
@@ -25,6 +26,9 @@ class QueryResolver extends AbstractResolver
                 $list->readObjects();
 
                 return $list->getObjects();
+            },
+            'language' => function ($value, $args) {
+                return new Language($args['id']);
             },
             'user' => function ($value, $args) {
                 return new User($args['id']);

@@ -1,4 +1,5 @@
 extend type Query {
+  language(id: ID!): Language
   user(id: ID!): User
   users(first: Int = 20, skip: Int = 0): [User]
 }
@@ -7,4 +8,15 @@ type User {
   userID: ID!
   username: String!
   email: String!
+  language: Language!
+}
+
+type Language {
+  languageID: ID!
+  languageCode: String!
+  languageName: String!
+  countryCode: String!
+  isDefault: Boolean
+  hasContent: Boolean
+  isDisabled: Boolean
 }

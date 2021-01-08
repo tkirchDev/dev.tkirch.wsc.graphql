@@ -4,10 +4,15 @@ namespace graphql\system\resolver;
 class UserResolver extends AbstractResolver
 {
 
-    // public function __construct()
-    // {
-    //     $this->fieldResolvers = array_merge($this->fieldResolvers, [
-
-    //     ]);
-    // }
+    /**
+     * @inheritDoc
+     */
+    public function setFieldResolvers(): void
+    {
+        $this->fieldResolvers = array_merge($this->fieldResolvers, [
+            'language' => function ($value) {
+                return $value->getLanguage();
+            },
+        ]);
+    }
 }

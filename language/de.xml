@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com https://www.woltlab.com/XSD/2019/language.xsd" languagecode="de">
+
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.category.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.option.category.graphql.general"><![CDATA[Allgemein]]></item>
+		<item name="wcf.acp.option.category.graphql.server"><![CDATA[Server]]></item>
+		<item name="wcf.acp.option.category.graphql.server.default"><![CDATA[Standard-Server]]></item>
+
+		<item name="wcf.acp.option.graphql_server_query_depth"><![CDATA[Maximale Abfragetiefe]]></item>
+		<item name="wcf.acp.option.graphql_server_query_depth.description"><![CDATA[Die Abfragetiefe bestimmt, wie tief eine Abfrage verschachtelt werden darf. Wenn der Wert dieser Option 0 ist, dann wird die Abfragetiefe nicht geprüft.]]></item>
+	</category>
+</language>

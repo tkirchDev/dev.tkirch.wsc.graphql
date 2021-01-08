@@ -27,5 +27,9 @@
 	<instructions type="install">
 		<!-- files -->
 		<instruction type="file"/>
+
+		<!-- xml -->
+		<instruction type="option"/>
+		<instruction type="language"/>
 	</instructions>
 </package>

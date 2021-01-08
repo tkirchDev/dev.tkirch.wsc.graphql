@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <package name="dev.tkirch.wsc.graphql" xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/package.xsd">
 	<packageinformation>
-		<packagename>GraphQL</packagename>
-		<packagename language="de">GraphQL</packagename>
-		<packagedescription>ToDO.</packagedescription>
-		<packagedescription language="de">ToDo.</packagedescription>
+		<packagename><![CDATA[GraphQL]]></packagename>
+		<packagename language="de"><![CDATA[GraphQL]]></packagename>
+		<packagedescription><![CDATA[Provides an extensible GraphQL schema and API for your WSC page.]]></packagedescription>
+		<packagedescription language="de"><![CDATA[Bietet ein erweiterbares GraphQL-Schema und eine API für Ihre WSC-Seite.]]></packagedescription>
 		<version>0.1.0</version>
 		<date>2021-01-06</date>
 		<isapplication>1</isapplication>

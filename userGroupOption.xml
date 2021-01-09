@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/userGroupOption.xsd">
+	<import>
+        <categories>
+            <category name="user.graphql">
+                <parent>user</parent>
+            </category>
+            <category name="mod.graphql">
+                <parent>mod</parent>
+            </category>
+            <category name="admin.graphql">
+                <parent>admin</parent>
+            </category>
+        </categories>
+        
+		<options>
+			<option name="admin.graphql.canManageSchema">
+				<categoryname>admin.graphql</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+				<admindefaultvalue>1</admindefaultvalue>
+				<usersonly>1</usersonly>
+			</option>
+        </options>
+	</import>
+</data>

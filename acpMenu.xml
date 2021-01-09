@@ -8,7 +8,7 @@
 		<acpmenuitem name="graphql.acp.menu.link.schema.list">
 			<controller>graphql\acp\page\SchemaListPage</controller>
 			<parent>graphql.acp.menu.link.graphql</parent>
-			<!--<permissions>admin.graphql.canManageSchema</permissions>-->
+			<permissions>admin.graphql.canManageSchema</permissions>
 			<showorder>1</showorder>
 		</acpmenuitem>
 	</import>

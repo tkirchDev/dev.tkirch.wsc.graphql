@@ -15,7 +15,7 @@ class SchemaListPage extends SortablePage
     /**
      * @inheritDoc
      */
-    #public $neededPermissions = ['admin.graphql.canManageSchema'];
+    public $neededPermissions = ['admin.graphql.canManageSchema'];
 
     /**
      * @inheritDoc

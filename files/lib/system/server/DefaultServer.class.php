@@ -1,8 +1,8 @@
 <?php
 namespace graphql\system\server;
 
+require_once WCF_DIR . 'lib/system/api/graphql-php/autoload.php';
 use graphql\data\schema\SchemaList;
-use GraphQL\Language\Parser;
 use GraphQL\Type\Schema;
 use GraphQL\Utils\BuildSchema;
 use GraphQL\Utils\SchemaExtender;
@@ -26,11 +26,7 @@ class DefaultServer extends AbstractServer
         $schemaList->readObjects();
 
         foreach ($schemaList as $schemaFile) {
-            if (file_exists(WCF_DIR . $schemaFile->filepath)) {
-                $fileContent = file_get_contents(WCF_DIR . $schemaFile->filepath);
-                $documentNode = Parser::parse($fileContent);
-                $schema = SchemaExtender::extend($schema, $documentNode);
-            }
+            $schema = SchemaExtender::extend($schema, $schemaFile->getParsedFileContent());
         }
         $schema = BuildSchema::build(SchemaPrinter::doPrint($schema), $this->typeConfigDecorator);
 

@@ -3,13 +3,24 @@
 
 	<category name="graphql.acp.menu">
 		<item name="graphql.acp.menu.link.graphql"><![CDATA[GraphQL]]></item>
+		<item name="graphql.acp.menu.link.schema"><![CDATA[Schema]]></item>
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schema list]]></item>
 	</category>
 
 	<category name="graphql.schema">
+		<item name="graphql.schema.details"><![CDATA[Details]]></item>
+		<item name="graphql.schema.fileContent"><![CDATA[File content]]></item>
 		<item name="graphql.schema.filepath"><![CDATA[Filepath]]></item>
 		<item name="graphql.schema.name"><![CDATA[Name]]></item>
 		<item name="graphql.schema.priority"><![CDATA[Priority]]></item>
+	</category>
+
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.admin.graphql"><![CDATA[GraphQL]]></item>
+
+		<item name="wcf.acp.group.option.admin.graphql.canManageSchema"><![CDATA[Can manage scheme]]></item>
 	</category>
 
 	<category name="wcf.acp.option">

@@ -7,6 +7,12 @@ use wcf\system\request\IRouteController;
 class Schema extends DatabaseObject implements IRouteController
 {
     /**
+     * database table for this object
+     * @var    string
+     */
+    protected static $databaseTableName = 'schema';
+
+    /**
      * @inheritDoc
      */
     public function __toString()
@@ -20,5 +26,13 @@ class Schema extends DatabaseObject implements IRouteController
     public function getTitle()
     {
         return $this->name;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public static function getDatabaseTableAlias()
+    {
+        return null;
     }
 }

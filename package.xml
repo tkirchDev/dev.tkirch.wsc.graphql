@@ -29,9 +29,11 @@
 	<instructions type="install">
 		<!-- files -->
 		<instruction type="file"/>
+		<instruction type="acpTemplate"/>
 
 		<!-- xml -->
 		<instruction type="option"/>
+		<instruction type="acpMenu"/>
 		<instruction type="language"/>
 
 		<!-- scripts -->

@@ -15,6 +15,14 @@
 		<item name="graphql.schema.priority"><![CDATA[Priorität]]></item>
 	</category>
 
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.admin.graphql"><![CDATA[GraphQL]]></item>
+
+		<item name="wcf.acp.group.option.admin.graphql.canManageSchema"><![CDATA[Kann Schema verwalten]]></item>
+	</category>
+
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.category.graphql"><![CDATA[GraphQL]]></item>
 		<item name="wcf.acp.option.category.graphql.general"><![CDATA[Allgemein]]></item>

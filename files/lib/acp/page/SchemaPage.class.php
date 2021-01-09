@@ -17,7 +17,7 @@ class SchemaPage extends AbstractPage
     /**
      * @inheritDoc
      */
-    #public $neededPermissions = ['admin.graphql.canManageSchema'];
+    public $neededPermissions = ['admin.graphql.canManageSchema'];
 
     /**
      *

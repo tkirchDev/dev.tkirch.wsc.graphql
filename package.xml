@@ -18,10 +18,12 @@
 
 	<requiredpackages>
 		<requiredpackage minversion="5.3.0">com.woltlab.wcf</requiredpackage>
+		<requiredpackage minversion="14.4.0" file="requirements/dev.tkirch.wsc.graphql-php.tar">dev.tkirch.wsc.graphql-php</requiredpackage>
 	</requiredpackages>
 
 	<excludedpackages>
 		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="15.0.0 Alpha 1">dev.tkirch.wsc.graphql-php</excludedpackage>
 	</excludedpackages>
 
 	<instructions type="install">

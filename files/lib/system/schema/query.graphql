@@ -1,8 +1,17 @@
 extend type Query {
+  article(id: ID!): Article
+  articles(first: Int = 20, skip: Int = 0): [Article]
   language(id: ID!): Language
   languages(first: Int = 20, skip: Int = 0): [Language]
   user(id: ID!): User
   users(first: Int = 20, skip: Int = 0): [User]
+}
+
+type Article {
+  articleID: ID!
+  title: String!
+  teaser: String
+  user: User
 }
 
 type User {

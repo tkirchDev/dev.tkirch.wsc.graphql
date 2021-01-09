@@ -34,7 +34,7 @@
 			<tbody>
 				{foreach from=$objects item=schema}
 					<tr class="jsSchemaRow">
-						<td class="columnTitle columnName">{$schema->name}</td>
+						<td class="columnTitle columnName">{$schema->getTitle()}</td>
 						<td class="columnTitle columnFilepath">{$schema->filepath}</td>
 						<td class="columnTitle columnPriority">{$schema->priority}</td>
 

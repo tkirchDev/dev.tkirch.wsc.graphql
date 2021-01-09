@@ -1,4 +1,5 @@
 <?php
+use graphql\data\schema\SchemaAction;
 use wcf\system\database\table\column\NotNullInt10DatabaseTableColumn;
 use wcf\system\database\table\column\NotNullVarchar255DatabaseTableColumn;
 use wcf\system\database\table\column\ObjectIdDatabaseTableColumn;
@@ -23,3 +24,12 @@ $tables = [
     $tables,
     WCF::getDB()->getEditor())
 )->process();
+
+// add default schemas
+(new SchemaAction([], 'create', [
+    'data' => [
+        'name' => 'QuerySchema',
+        'filepath' => 'graphql/lib/system/schema/query.graphql',
+        'priority' => -1000,
+    ],
+]))->executeAction();

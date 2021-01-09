@@ -3,10 +3,13 @@
 
 	<category name="graphql.acp.menu">
 		<item name="graphql.acp.menu.link.graphql"><![CDATA[GraphQL]]></item>
+		<item name="graphql.acp.menu.link.schema"><![CDATA[Schema]]></item>
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schemaliste]]></item>
 	</category>
 
 	<category name="graphql.schema">
+		<item name="graphql.schema.details"><![CDATA[Details]]></item>
+		<item name="graphql.schema.fileContent"><![CDATA[Dateiinhalt]]></item>
 		<item name="graphql.schema.filepath"><![CDATA[Dateipfad]]></item>
 		<item name="graphql.schema.name"><![CDATA[Name]]></item>
 		<item name="graphql.schema.priority"><![CDATA[Priorität]]></item>

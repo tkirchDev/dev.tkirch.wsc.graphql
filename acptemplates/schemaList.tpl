@@ -34,9 +34,21 @@
 			<tbody>
 				{foreach from=$objects item=schema}
 					<tr class="jsSchemaRow">
-						<td class="columnTitle columnName">{$schema->getTitle()}</td>
-						<td class="columnTitle columnFilepath">{$schema->filepath}</td>
-						<td class="columnTitle columnPriority">{$schema->priority}</td>
+						<td class="columnTitle columnName">
+							<a href="{link application='graphql' controller='Schema' object=$schema}{/link}">
+								{$schema->getTitle()}
+							</a>
+						</td>
+						<td class="columnTitle columnFilepath">
+							<a href="{link application='graphql' controller='Schema' object=$schema}{/link}">
+							{$schema->filepath}
+							</a>
+						</td>
+						<td class="columnTitle columnPriority">
+							<a href="{link application='graphql' controller='Schema' object=$schema}{/link}">
+							{$schema->priority}
+							</a>
+						</td>
 
 						{event name='columns'}
 					</tr>

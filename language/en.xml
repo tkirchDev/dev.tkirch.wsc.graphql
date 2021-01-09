@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com https://www.woltlab.com/XSD/2019/language.xsd" languagecode="en">
 
+	<category name="graphql.acp.menu">
+		<item name="graphql.acp.menu.link.graphql"><![CDATA[GraphQL]]></item>
+		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schema list]]></item>
+	</category>
+
+	<category name="graphql.schema">
+		<item name="graphql.schema.filepath"><![CDATA[Filepath]]></item>
+		<item name="graphql.schema.name"><![CDATA[Name]]></item>
+		<item name="graphql.schema.priority"><![CDATA[Priority]]></item>
+	</category>
+
 	<category name="wcf.acp.option">
 		<item name="wcf.acp.option.category.graphql"><![CDATA[GraphQL]]></item>
 		<item name="wcf.acp.option.category.graphql.general"><![CDATA[General]]></item>

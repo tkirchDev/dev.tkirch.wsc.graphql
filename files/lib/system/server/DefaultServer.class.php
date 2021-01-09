@@ -1,6 +1,7 @@
 <?php
 namespace graphql\system\server;
 
+use graphql\data\schema\SchemaList;
 use GraphQL\Language\Parser;
 use GraphQL\Type\Schema;
 use GraphQL\Utils\BuildSchema;
@@ -21,11 +22,15 @@ class DefaultServer extends AbstractServer
             type Query');
 
         //get schema files and extend schema
-        $files = glob(WCF_DIR . 'graphql/lib/system/schema/*.graphql');
-        natsort($files);
-        foreach (array_map('file_get_contents', $files) as $fileContent) {
-            $documentNode = Parser::parse($fileContent);
-            $schema = SchemaExtender::extend($schema, $documentNode);
+        $schemaList = new SchemaList();
+        $schemaList->readObjects();
+
+        foreach ($schemaList as $schemaFile) {
+            if (file_exists(WCF_DIR . $schemaFile->filepath)) {
+                $fileContent = file_get_contents(WCF_DIR . $schemaFile->filepath);
+                $documentNode = Parser::parse($fileContent);
+                $schema = SchemaExtender::extend($schema, $documentNode);
+            }
         }
         $schema = BuildSchema::build(SchemaPrinter::doPrint($schema), $this->typeConfigDecorator);
 

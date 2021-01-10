@@ -15,15 +15,17 @@
 		<author>Titus Kirch</author>
 		<authorurl>https://tkirch.dev</authorurl>
 	</authorinformation>
-
+	
 	<requiredpackages>
 		<requiredpackage minversion="5.3.0">com.woltlab.wcf</requiredpackage>
 		<requiredpackage minversion="14.4.0" file="requirements/dev.tkirch.wsc.graphql-php.tar">dev.tkirch.wsc.graphql-php</requiredpackage>
+		<requiredpackage minversion="5.2.0" file="requirements/dev.tkirch.wsc.php-jwt.tar">dev.tkirch.wsc.php-jwt</requiredpackage>
 	</requiredpackages>
 
 	<excludedpackages>
 		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
-		<excludedpackage version="15.0.0 Alpha 1">dev.tkirch.wsc.graphql-php</excludedpackage>
+		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="6.0.0 Alpha 1">dev.tkirch.wsc.php-jwt</excludedpackage>
 	</excludedpackages>
 
 	<instructions type="install">

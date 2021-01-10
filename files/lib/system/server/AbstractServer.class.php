@@ -3,6 +3,7 @@ namespace graphql\system\server;
 
 use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
+use graphql\util\CredentialUtil;
 use GraphQL\Validator\DocumentValidator;
 use GraphQL\Validator\Rules\QueryDepth;
 use wcf\system\event\EventHandler;
@@ -16,6 +17,11 @@ abstract class AbstractServer implements IServer
      * @var ServerConfig
      */
     protected $config;
+
+    /**
+     * @var CredentialToken
+     */
+    protected $token;
 
     /**
      * @inheritDoc
@@ -42,6 +48,17 @@ abstract class AbstractServer implements IServer
         };
 
         $this->setConfig();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function authenticate(): void
+    {
+        //check for authorization
+        if (isset(apache_request_headers()['Authorization'])) {
+            $this->token = CredentialUtil::checkToken(apache_request_headers()['Authorization']);
+        }
     }
 
     /**

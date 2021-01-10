@@ -1,6 +1,5 @@
 <?php
 use graphql\data\schema\SchemaAction;
-use wcf\system\database\table\column\DatetimeDatabaseTableColumn;
 use wcf\system\database\table\column\NotNullInt10DatabaseTableColumn;
 use wcf\system\database\table\column\NotNullVarchar255DatabaseTableColumn;
 use wcf\system\database\table\column\ObjectIdDatabaseTableColumn;
@@ -31,8 +30,8 @@ $tables = [
             ObjectIdDatabaseTableColumn::create('credentialTokenID'),
             NotNullInt10DatabaseTableColumn::create('credentialID'),
             NotNullVarchar255DatabaseTableColumn::create('type'),
-            DatetimeDatabaseTableColumn::create('validUntil'),
-            DatetimeDatabaseTableColumn::create('createdAt'),
+            NotNullInt10DatabaseTableColumn::create('validUntil'),
+            NotNullInt10DatabaseTableColumn::create('createdAt'),
         ])
         ->foreignKeys([
             DatabaseTableForeignKey::create()

@@ -21,4 +21,17 @@ class Credential extends DatabaseObject implements IRouteController
     {
         return $this->name;
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function __get($name)
+    {
+        //set key as alias for credentialKey
+        if ($name == 'key') {
+            return $this->data['credentialKey'];
+        }
+
+        return parent::__get($name);
+    }
 }

@@ -3,6 +3,9 @@
 
 	<category name="graphql.acp.menu">
 		<item name="graphql.acp.menu.link.graphql"><![CDATA[GraphQL]]></item>
+		<item name="graphql.acp.menu.link.credential"><![CDATA[Access data]]></item>
+		<item name="graphql.acp.menu.link.credential.add"><![CDATA[Add access data]]></item>
+		<item name="graphql.acp.menu.link.credential.list"><![CDATA[Access data]]></item>
 		<item name="graphql.acp.menu.link.schema"><![CDATA[Schema]]></item>
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schema list]]></item>
 	</category>
@@ -16,10 +19,11 @@
 	</category>
 
 	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
-		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
 		<item name="wcf.acp.group.option.category.admin.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
 
+		<item name="wcf.acp.group.option.admin.graphql.canManageCredential"><![CDATA[Can access data scheme]]></item>
 		<item name="wcf.acp.group.option.admin.graphql.canManageSchema"><![CDATA[Can manage scheme]]></item>
 	</category>
 

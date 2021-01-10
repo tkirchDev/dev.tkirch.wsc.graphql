@@ -1,30 +1,30 @@
 <?php
 namespace graphql\acp\page;
 
-use graphql\data\schema\Schema;
+use graphql\data\credential\Credential;
 use wcf\page\AbstractPage;
 use wcf\system\exception\IllegalLinkException;
 use wcf\system\WCF;
 
-class SchemaPage extends AbstractPage
+class CredentialPage extends AbstractPage
 {
 
     /**
      * @inheritDoc
      */
-    public $activeMenuItem = 'graphql.acp.menu.link.schema.list';
+    public $activeMenuItem = 'graphql.acp.menu.link.credential.list';
 
     /**
      * @inheritDoc
      */
-    public $neededPermissions = ['admin.graphql.canManageSchema'];
+    public $neededPermissions = ['admin.graphql.canManageCredential'];
 
     /**
-     * store the schema
+     * store the credential
      *
-     * @var Schema
+     * @var Credential
      */
-    public $schema;
+    public $credential;
 
     /**
      * @inheritDoc
@@ -34,8 +34,8 @@ class SchemaPage extends AbstractPage
         parent::readParameters();
 
         if (isset($_REQUEST['id'])) {
-            $this->schema = new Schema(intval($_REQUEST['id']));
-            if (!$this->schema->schemaID) {
+            $this->credential = new Credential(intval($_REQUEST['id']));
+            if (!$this->credential->credentialID) {
                 throw new IllegalLinkException();
             }
         } else {
@@ -52,7 +52,7 @@ class SchemaPage extends AbstractPage
 
         // assign parameters
         WCF::getTPL()->assign([
-            'schema' => $this->schema,
+            'credential' => $this->credential,
         ]);
     }
 }

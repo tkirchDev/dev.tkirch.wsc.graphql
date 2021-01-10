@@ -23,7 +23,7 @@ $tables = [
         ->columns([
             ObjectIdDatabaseTableColumn::create('credentialID'),
             NotNullVarchar255DatabaseTableColumn::create('name'),
-            NotNullVarchar255DatabaseTableColumn::create('key'),
+            NotNullVarchar255DatabaseTableColumn::create('credentialKey'),
             TextDatabaseTableColumn::create('secret'),
         ]),
     DatabaseTable::create('graphql1_credential_token')

@@ -24,7 +24,7 @@
 
 	<excludedpackages>
 		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
-		<excludedpackage version="6.0.0 Alpha 1">com.woltlab.wcf</excludedpackage>
+		<excludedpackage version="6.0.0 Alpha 1">dev.tkirch.wsc.graphql-php</excludedpackage>
 		<excludedpackage version="6.0.0 Alpha 1">dev.tkirch.wsc.php-jwt</excludedpackage>
 	</excludedpackages>
 

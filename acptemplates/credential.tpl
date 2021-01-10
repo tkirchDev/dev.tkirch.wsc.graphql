@@ -47,7 +47,7 @@
                                 {$token->credentialTokenID}
                             </td>
                             <td class="columnTitle columnType">
-                                {$token->type}
+                                {lang}graphql.credential.token.type.{$token->type}{/lang}
                             </td>
                             <td class="columnTitle columnValidUntil">
                                 {$token->validUntil}

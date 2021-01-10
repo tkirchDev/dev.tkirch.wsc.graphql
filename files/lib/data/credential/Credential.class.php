@@ -1,11 +1,19 @@
 <?php
 namespace graphql\data\credential;
 
+use graphql\data\credential\token\CredentialTokenList;
 use wcf\data\DatabaseObject;
 use wcf\system\request\IRouteController;
 
 class Credential extends DatabaseObject implements IRouteController
 {
+    /**
+     * store tokens
+     *
+     * @var array
+     */
+    protected $tokens = [];
+
     /**
      * @inheritDoc
      */
@@ -33,5 +41,22 @@ class Credential extends DatabaseObject implements IRouteController
         }
 
         return parent::__get($name);
+    }
+
+    /**
+     * get all tokens from credential
+     *
+     * @return array
+     */
+    public function getTokens(): array
+    {
+        if (empty($this->tokens)) {
+            $tokenList = new CredentialTokenList();
+            $tokenList->getConditionBuilder()->add('credentialID = ?', [$this->credentialID]);
+            $tokenList->readObjects();
+            $this->tokens = $tokenList->getObjects();
+        }
+
+        return $this->tokens;
     }
 }

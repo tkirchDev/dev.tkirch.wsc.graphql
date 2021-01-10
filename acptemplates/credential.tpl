@@ -26,7 +26,45 @@
 
 <div class="section">
     <h1 class="sectionTitle">{lang}graphql.credential.tokens{/lang}</h1>
-</div>
+    {if $credential->getTokens()|count}
+        <div class="section tabularBox" id="tokenTableContainer">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="columnID columnTokenID">{lang}wcf.global.objectID{/lang}</th>
+                        <th class="columnTitle columnType">{lang}graphql.credential.token.type{/lang}</th>
+                        <th class="columnTitle columnValidUntil">{lang}graphql.credential.token.validUntil{/lang}</th>
+                        <th class="columnTitle columnCreatedAt">{lang}graphql.credential.token.createdAt{/lang}</th>
+                        
+                        {event name='columnHeads'}
+                    </tr>
+                </thead>
 
+                <tbody>
+                    {foreach from=$credential->getTokens() item=token}
+                        <tr class="jsTokenRow">
+                            <td class="columnID columnTokenID">
+                                {$token->credentialTokenID}
+                            </td>
+                            <td class="columnTitle columnType">
+                                {$token->type}
+                            </td>
+                            <td class="columnTitle columnValidUntil">
+                                {$token->validUntil}
+                            </td>
+                            <td class="columnTitle columnCreatedAt">
+                                {$token->createdAt}
+                            </td>
+
+                            {event name='columns'}
+                        </tr>
+                    {/foreach}
+                </tbody>
+            </table>
+        </div>
+    {else}
+        <p class="info">{lang}wcf.global.noItems{/lang}</p>
+    {/if}
+</div>
 
 {include file='footer'}

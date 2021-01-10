@@ -25,6 +25,7 @@ abstract class AbstractServer implements IServer
         //set resolvers
         $this->registerResolvers([
             'Query' => \graphql\system\resolver\QueryResolver::class,
+            'Mutation' => \graphql\system\resolver\MutationResolver::class,
             'Article' => \graphql\system\resolver\ArticleResolver::class,
             'User' => \graphql\system\resolver\UserResolver::class,
         ]);

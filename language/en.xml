@@ -9,6 +9,23 @@
 		<item name="graphql.acp.menu.link.schema"><![CDATA[Schema]]></item>
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schema list]]></item>
 	</category>
+	
+	<category name="graphql.credential">
+		<item name="graphql.credential.delete.confirmMessage"><![CDATA[Do you really want to delete the credential <span class="confirmationObject">{$credential}</span>?]]></item>
+		<item name="graphql.credential.details"><![CDATA[details]]></item>
+		<item name="graphql.credential.general"><![CDATA[General]]></item> 
+		<item name="graphql.credential.key"><![CDATA[Key]]></item>
+		<item name="graphql.credential.name"><![CDATA[Name]]></item> 
+		<item name="graphql.credential.secret"><![CDATA[Secret Key]]></item>
+		<item name="graphql.credential.secret.description"><![CDATA[Please make a note of the secret key, as it will not be displayed after submitting this form]]></item>
+		<item name="graphql.credential.token"><![CDATA[token]]></item>
+		<item name="graphql.credential.token.createdAt"><![CDATA[Created on]]></item>
+		<item name="graphql.credential.token.type"><![CDATA[Type]]></item>
+		<item name="graphql.credential.token.type.longlife"><![CDATA[longlife token]]></item>
+		<item name="graphql.credential.token.validUntil"><![CDATA[Valid until]]></item>
+		<item name="graphql.credential.tokens"><![CDATA[Tokens]]></item>
+		<item name="graphql.credential.view"><![CDATA[View credentials]]></item>
+	</category>
 
 	<category name="graphql.schema">
 		<item name="graphql.schema.details"><![CDATA[Details]]></item>

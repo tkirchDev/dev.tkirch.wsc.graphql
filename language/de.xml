@@ -10,6 +10,23 @@
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schemaliste]]></item>
 	</category>
 
+	<category name="graphql.credential">
+		<item name="graphql.credential.delete.confirmMessage"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} die Zugangsdaten <span class="confirmationObject">{$credential}</span> wirklich löschen?]]></item>
+		<item name="graphql.credential.details"><![CDATA[Details]]></item>
+		<item name="graphql.credential.general"><![CDATA[Allgemein]]></item> 
+		<item name="graphql.credential.key"><![CDATA[Key]]></item>
+		<item name="graphql.credential.name"><![CDATA[Name]]></item> 
+		<item name="graphql.credential.secret"><![CDATA[Geheimschlüssel]]></item>
+		<item name="graphql.credential.secret.description"><![CDATA[Bitte {if LANGUAGE_USE_INFORMAL_VARIANT}notiere dir {else}notieren Sie sich{/if} den geheimen Schlüssel, da er nach dem Absenden dieses Formulars nicht mehr angezeigt wird.]]></item>
+		<item name="graphql.credential.token"><![CDATA[Token]]></item>
+		<item name="graphql.credential.token.createdAt"><![CDATA[Erstellt am]]></item>
+		<item name="graphql.credential.token.type"><![CDATA[Typ]]></item>
+		<item name="graphql.credential.token.type.longlife"><![CDATA[Langlebiger Token]]></item>
+		<item name="graphql.credential.token.validUntil"><![CDATA[Gültig bis]]></item>
+		<item name="graphql.credential.tokens"><![CDATA[Tokens]]></item>
+		<item name="graphql.credential.view"><![CDATA[Zeige Zugangsdaten an]]></item>
+	</category>
+
 	<category name="graphql.schema">
 		<item name="graphql.schema.details"><![CDATA[Details]]></item>
 		<item name="graphql.schema.fileContent"><![CDATA[Dateiinhalt]]></item>

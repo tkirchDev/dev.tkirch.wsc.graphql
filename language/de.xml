@@ -3,8 +3,28 @@
 
 	<category name="graphql.acp.menu">
 		<item name="graphql.acp.menu.link.graphql"><![CDATA[GraphQL]]></item>
+		<item name="graphql.acp.menu.link.credential"><![CDATA[Zugangsdaten]]></item>
+		<item name="graphql.acp.menu.link.credential.add"><![CDATA[Zugangsdaten hinzufügen]]></item>
+		<item name="graphql.acp.menu.link.credential.list"><![CDATA[Zugangsdaten]]></item>
 		<item name="graphql.acp.menu.link.schema"><![CDATA[Schema]]></item>
 		<item name="graphql.acp.menu.link.schema.list"><![CDATA[Schemaliste]]></item>
+	</category>
+
+	<category name="graphql.credential">
+		<item name="graphql.credential.delete.confirmMessage"><![CDATA[{if LANGUAGE_USE_INFORMAL_VARIANT}Willst du{else}Wollen Sie{/if} die Zugangsdaten <span class="confirmationObject">{$credential}</span> wirklich löschen?]]></item>
+		<item name="graphql.credential.details"><![CDATA[Details]]></item>
+		<item name="graphql.credential.general"><![CDATA[Allgemein]]></item> 
+		<item name="graphql.credential.key"><![CDATA[Key]]></item>
+		<item name="graphql.credential.name"><![CDATA[Name]]></item> 
+		<item name="graphql.credential.secret"><![CDATA[Geheimschlüssel]]></item>
+		<item name="graphql.credential.secret.description"><![CDATA[Bitte {if LANGUAGE_USE_INFORMAL_VARIANT}notiere dir {else}notieren Sie sich{/if} den geheimen Schlüssel, da er nach dem Absenden dieses Formulars nicht mehr angezeigt wird.]]></item>
+		<item name="graphql.credential.token"><![CDATA[Token]]></item>
+		<item name="graphql.credential.token.createdAt"><![CDATA[Erstellt am]]></item>
+		<item name="graphql.credential.token.type"><![CDATA[Typ]]></item>
+		<item name="graphql.credential.token.type.longlife"><![CDATA[Langlebiger Token]]></item>
+		<item name="graphql.credential.token.validUntil"><![CDATA[Gültig bis]]></item>
+		<item name="graphql.credential.tokens"><![CDATA[Tokens]]></item>
+		<item name="graphql.credential.view"><![CDATA[Zeige Zugangsdaten an]]></item>
 	</category>
 
 	<category name="graphql.schema">
@@ -16,10 +36,11 @@
 	</category>
 
 	<category name="wcf.acp.group">
-		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
-		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
 		<item name="wcf.acp.group.option.category.admin.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.mod.graphql"><![CDATA[GraphQL]]></item>
+		<item name="wcf.acp.group.option.category.user.graphql"><![CDATA[GraphQL]]></item>
 
+		<item name="wcf.acp.group.option.admin.graphql.canManageCredential"><![CDATA[Kann Zugangsdaten verwalten]]></item>
 		<item name="wcf.acp.group.option.admin.graphql.canManageSchema"><![CDATA[Kann Schema verwalten]]></item>
 	</category>
 

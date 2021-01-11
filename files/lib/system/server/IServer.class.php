@@ -8,6 +8,7 @@ use GraphQL\Type\Schema;
 interface IServer
 {
     public function __construct();
+    public function authenticate(): void;
     public function buildSchema(): Schema;
     public function execute(): void;
     public function registerResolver($resolver): void;

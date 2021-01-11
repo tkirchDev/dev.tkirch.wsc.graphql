@@ -8,6 +8,7 @@
 	<nav class="contentHeaderNavigation">
 		<ul>
 			<li><a href="{link application='graphql' controller='SchemaList'}{/link}" class="button"><span class="icon icon16 fa-list"></span> <span>{lang}graphql.acp.menu.link.schema.list{/lang}</span></a></li>
+            
 			{event name='contentHeaderNavigation'}
 		</ul>
 	</nav>

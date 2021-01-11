@@ -7,6 +7,7 @@ use wcf\page\AbstractPage;
 
 class IndexPage extends AbstractPage
 {
+
     /**
      * @inheritDoc
      */

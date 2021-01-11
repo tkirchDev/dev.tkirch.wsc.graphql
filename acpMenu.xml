@@ -11,10 +11,19 @@
 			<permissions>admin.graphql.canManageSchema</permissions>
 			<showorder>1</showorder>
 		</acpmenuitem>
-	</import>
 
-	<delete>
-		<acpmenuitem name="wcf.acp.menu.link.graphql"/>
-		<acpmenuitem name="wcf.acp.menu.link.graphql.schema.list"/>
-	</delete>
+		<acpmenuitem name="graphql.acp.menu.link.credential.list">
+			<controller>graphql\acp\page\CredentialListPage</controller>
+			<parent>graphql.acp.menu.link.graphql</parent>
+			<permissions>admin.graphql.canManageCredential</permissions>
+			<showorder>2</showorder>
+		</acpmenuitem>
+
+		<acpmenuitem name="graphql.acp.menu.link.credential.add">
+			<controller>graphql\acp\form\CredentialAddForm</controller>
+			<parent>graphql.acp.menu.link.credential.list</parent>
+			<permissions>admin.graphql.canManageCredential</permissions>
+			<icon>fa-plus</icon>
+		</acpmenuitem>
+	</import>
 </data>

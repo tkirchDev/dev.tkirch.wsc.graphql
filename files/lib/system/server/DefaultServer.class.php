@@ -18,8 +18,11 @@ class DefaultServer extends AbstractServer
         $schema = BuildSchema::build('
             schema {
                 query: Query
+                mutation: Mutation
             }
-            type Query');
+            type Query
+            type Mutation
+        ');
 
         //get schema files and extend schema
         $schemaList = new SchemaList();

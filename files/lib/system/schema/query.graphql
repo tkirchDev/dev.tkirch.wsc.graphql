@@ -7,6 +7,10 @@ extend type Query {
   users(first: Int = 20, skip: Int = 0): [User]
 }
 
+extend type Mutation {
+  generateToken(key: String, secret: String, type: String = "shotlife"): String
+}
+
 type Article {
   articleID: ID!
   title: String!

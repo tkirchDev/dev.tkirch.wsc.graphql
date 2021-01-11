@@ -7,6 +7,7 @@ use Firebase\JWT\JWT;
 use graphql\data\credential\Credential;
 use graphql\data\credential\token\CredentialToken;
 use graphql\data\credential\token\CredentialTokenAction;
+use graphql\system\exception\AuthException;
 
 class CredentialUtil
 {
@@ -18,7 +19,7 @@ class CredentialUtil
      * @param String $secret
      * @param String $type
      *
-     * @throws\Exception
+     * @throws AuthException
      *
      * @return String
      */
@@ -46,7 +47,7 @@ class CredentialUtil
 
             return $encoded;
         } else {
-            throw new \Exception('invalid credentials');
+            throw new AuthException('credential.invalid');
         }
     }
 
@@ -55,14 +56,18 @@ class CredentialUtil
      *
      * @param String $token
      *
-     * @throws\Exception
+     * @throws AuthException
      *
      * @return CredentialToken
      */
     public static function checkToken(String $token)
     {
-        //decode token
-        $decodedToken = JWT::decode(substr($token, 7), SIGNATURE_SECRET, array('HS256'));
+        //try decode token
+        try {
+            $decodedToken = JWT::decode(substr($token, 7), SIGNATURE_SECRET, array('HS256'));
+        } catch (\Exception $e) {
+            throw new AuthException('token.invalid');
+        }
 
         //get token by id
         $token = new CredentialToken($decodedToken->tokenID);
@@ -71,7 +76,38 @@ class CredentialUtil
         if ($token->credentialTokenID && $token->validUntil >= time()) {
             return $token;
         } else {
-            throw new \Exception('invalid token');
+            throw new AuthException('token.invalid');
         }
+    }
+
+    /**
+     * check if is authenticated by context
+     *
+     * @param array $context
+     * @param bool $autetificationIsRequired
+     *
+     * @throws AuthException
+     *
+     * @return boolean
+     */
+    public static function checkIsAuthenticated(array $context, bool $autetificationIsRequired = false)
+    {
+        $error = '';
+        if (isset($context['token'])) {
+            if (!$context['token']->getCredential()->credentialID) {
+                $error = 'token.invalid';
+            }
+        } else {
+            $error = 'token.not.set';
+        }
+
+        //check return type
+        if ($autetificationIsRequired && !empty($error)) {
+            throw new AuthException($error);
+        } elseif ($error) {
+            return false;
+        }
+
+        return true;
     }
 }

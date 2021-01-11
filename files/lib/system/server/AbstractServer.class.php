@@ -1,6 +1,7 @@
 <?php
 namespace graphql\system\server;
 
+use GraphQL\Error\DebugFlag;
 use GraphQL\Server\ServerConfig;
 use GraphQL\Server\StandardServer;
 use graphql\util\CredentialUtil;
@@ -28,33 +29,24 @@ abstract class AbstractServer implements IServer
      */
     public function __construct()
     {
-        try {
-            //set resolvers
-            $this->registerResolvers([
-                'Query' => \graphql\system\resolver\QueryResolver::class,
-                'Mutation' => \graphql\system\resolver\MutationResolver::class,
-                'Article' => \graphql\system\resolver\ArticleResolver::class,
-                'User' => \graphql\system\resolver\UserResolver::class,
-            ]);
+        //set resolvers
+        $this->registerResolvers([
+            'Query' => \graphql\system\resolver\QueryResolver::class,
+            'Mutation' => \graphql\system\resolver\MutationResolver::class,
+            'Article' => \graphql\system\resolver\ArticleResolver::class,
+            'User' => \graphql\system\resolver\UserResolver::class,
+        ]);
 
-            // call beforeFieldResolvers event
-            EventHandler::getInstance()->fireAction($this, 'registerResolvers');
+        // call beforeFieldResolvers event
+        EventHandler::getInstance()->fireAction($this, 'registerResolvers');
 
-            // get type config decorator
-            $this->typeConfigDecorator = function ($typeConfig, $typeDefinitionNode) {
-                if (array_key_exists($typeConfig['name'], $this->resolvers)) {
-                    $typeConfig['resolveField'] = new $this->resolvers[$typeConfig['name']];
-                }
-                return $typeConfig;
-            };
-
-            $this->setConfig();
-            $this->authenticate();
-
-        } catch (\Exception $e) {
-            StandardServer::send500Error($e);
-        }
-        exit();
+        // get type config decorator
+        $this->typeConfigDecorator = function ($typeConfig, $typeDefinitionNode) {
+            if (array_key_exists($typeConfig['name'], $this->resolvers)) {
+                $typeConfig['resolveField'] = new $this->resolvers[$typeConfig['name']];
+            }
+            return $typeConfig;
+        };
     }
 
     /**
@@ -65,7 +57,9 @@ abstract class AbstractServer implements IServer
         //check for authorization
         if (isset(apache_request_headers()['Authorization'])) {
             $this->token = CredentialUtil::checkToken(apache_request_headers()['Authorization']);
-            $this->config->setContext(array_merge_recursive($this->config->getContext(), ['token' => $this->token]));
+            $this->config->setContext(array_merge_recursive($this->config->getContext(), [
+                'token' => $this->token,
+            ]));
         }
     }
 
@@ -75,12 +69,13 @@ abstract class AbstractServer implements IServer
     public function execute(): void
     {
         try {
+            $this->setConfig();
+            $this->authenticate();
             $server = new StandardServer($this->config);
-            $server->handleRequest();
+            $server->handleRequest(null, true);
         } catch (\Exception $e) {
-            StandardServer::send500Error($e);
+            StandardServer::send500Error($e, (ENABLE_DEBUG_MODE ? DebugFlag::RETHROW_UNSAFE_EXCEPTIONS : DebugFlag::NONE), true);
         }
-        exit();
     }
 
     /**
@@ -115,6 +110,7 @@ abstract class AbstractServer implements IServer
             $this->config->setSchema($this->buildSchema());
             $this->config->setQueryBatching(true);
             $this->config->setContext([]);
+
             if (GRAPHQL_SERVER_QUERY_DEPTH) {
                 DocumentValidator::addRule(new QueryDepth(GRAPHQL_SERVER_QUERY_DEPTH));
             }

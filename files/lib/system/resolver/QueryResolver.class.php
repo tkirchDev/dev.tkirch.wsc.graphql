@@ -1,6 +1,7 @@
 <?php
 namespace graphql\system\resolver;
 
+use graphql\util\CredentialUtil;
 use wcf\data\article\Article;
 use wcf\data\article\ArticleList;
 use wcf\data\language\Language;
@@ -17,10 +18,14 @@ class QueryResolver extends AbstractResolver
     public function setFieldResolvers(): void
     {
         $this->fieldResolvers = array_merge($this->fieldResolvers, [
-            'article' => function ($value, $args) {
+            'article' => function ($value, $args, $context) {
+                CredentialUtil::checkIsAuthenticated($context, true);
+
                 return new Article($args['id']);
             },
-            'articles' => function ($value, $args) {
+            'articles' => function ($value, $args, $context) {
+                CredentialUtil::checkIsAuthenticated($context, true);
+
                 $list = new ArticleList();
                 $list->sqlOffset = $args['skip'];
                 $list->sqlLimit = $args['first'];
@@ -28,10 +33,14 @@ class QueryResolver extends AbstractResolver
 
                 return $list->getObjects();
             },
-            'language' => function ($value, $args) {
+            'language' => function ($value, $args, $context) {
+                #CredentialUtil::checkIsAuthenticated($context, true);
+
                 return new Language($args['id']);
             },
-            'languages' => function ($value, $args) {
+            'languages' => function ($value, $args, $context) {
+                #CredentialUtil::checkIsAuthenticated($context, true);
+
                 $list = new LanguageList();
                 $list->sqlOffset = $args['skip'];
                 $list->sqlLimit = $args['first'];
@@ -39,10 +48,14 @@ class QueryResolver extends AbstractResolver
 
                 return $list->getObjects();
             },
-            'user' => function ($value, $args) {
+            'user' => function ($value, $args, $context) {
+                #CredentialUtil::checkIsAuthenticated($context, true);
+
                 return new User($args['id']);
             },
-            'users' => function ($value, $args) {
+            'users' => function ($value, $args, $context) {
+                #CredentialUtil::checkIsAuthenticated($context, true);
+
                 $list = new UserList();
                 $list->sqlOffset = $args['skip'];
                 $list->sqlLimit = $args['first'];

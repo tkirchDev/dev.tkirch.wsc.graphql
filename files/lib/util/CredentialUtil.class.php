@@ -84,13 +84,13 @@ class CredentialUtil
      * check if is authenticated by context
      *
      * @param array $context
-     * @param bool $autetificationIsRequired
+     * @param bool $authenticationIsRequired
      *
      * @throws AuthException
      *
-     * @return boolean
+     * @return bool
      */
-    public static function checkIsAuthenticated(array $context, bool $autetificationIsRequired = false)
+    public static function checkIsAuthenticated(array $context, bool $authenticationIsRequired = true): bool
     {
         $error = '';
         if (isset($context['token'])) {
@@ -102,12 +102,39 @@ class CredentialUtil
         }
 
         //check return type
-        if ($autetificationIsRequired && !empty($error)) {
+        if ($authenticationIsRequired && !empty($error)) {
             throw new AuthException($error);
         } elseif ($error) {
             return false;
         }
 
         return true;
+    }
+
+    /**
+     * check if has permissions by context
+     *
+     * @param array $context
+     * @param array $permissions
+     * @param bool $authenticationIsRequired
+     *
+     * @throws AuthException
+     *
+     * @return bool
+     */
+    public static function hasPermissions(array $context, array $permissions, bool $authenticationIsRequired = true): bool
+    {
+        //check if auth
+        if (!self::checkIsAuthenticated($context, $authenticationIsRequired)) {
+            return false;
+        }
+
+        //check permissions
+        if ($context['token']->getCredential()->hasPermissions($permissions)) {
+            return true;
+        } else {
+            throw new AuthException('credential.not.permitted');
+        }
+
     }
 }

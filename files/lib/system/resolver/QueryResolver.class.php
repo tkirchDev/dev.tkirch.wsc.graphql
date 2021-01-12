@@ -24,6 +24,7 @@ class QueryResolver extends AbstractResolver
                 return new Article($args['id']);
             },
             'articles' => function ($value, $args, $context) {
+                CredentialUtil::hasPermissions($context, ['article']);
                 CredentialUtil::checkIsAuthenticated($context, true);
 
                 $list = new ArticleList();

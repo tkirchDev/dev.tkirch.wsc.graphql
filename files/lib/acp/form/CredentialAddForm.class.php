@@ -2,8 +2,10 @@
 namespace graphql\acp\form;
 
 use graphql\data\credential\CredentialAction;
+use graphql\data\permission\PermissionList;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\form\builder\container\FormContainer;
+use wcf\system\form\builder\field\MultipleSelectionFormField;
 use wcf\system\form\builder\field\TextFormField;
 
 class CredentialAddForm extends AbstractFormBuilderForm
@@ -55,7 +57,13 @@ class CredentialAddForm extends AbstractFormBuilderForm
                         ->value(bin2hex(random_bytes(64)))
                         ->required(),
                 ]),
-
+            FormContainer::create('other')
+                ->label('graphql.credential.other')
+                ->appendChildren([
+                    MultipleSelectionFormField::create('permissions')
+                        ->label('graphql.credential.permissions')
+                        ->options(new PermissionList()),
+                ]),
         ]);
     }
 }

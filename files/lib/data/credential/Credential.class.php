@@ -1,7 +1,9 @@
 <?php
 namespace graphql\data\credential;
 
+use graphql\data\credential\permission\CredentialPermissionList;
 use graphql\data\credential\token\CredentialTokenList;
+use graphql\data\permission\PermissionList;
 use wcf\data\DatabaseObject;
 use wcf\system\request\IRouteController;
 use wcf\system\WCF;
@@ -15,6 +17,13 @@ class Credential extends DatabaseObject implements IRouteController
      * @var array
      */
     protected $tokens = [];
+
+    /**
+     * store permissions
+     *
+     * @var array
+     */
+    protected $permissions = [];
 
     /**
      * @inheritDoc
@@ -92,6 +101,60 @@ class Credential extends DatabaseObject implements IRouteController
         }
 
         return $isValid;
+    }
+
+    /**
+     * get all permissions from credential
+     *
+     * @return array
+     */
+    public function getPermissions(): array
+    {
+        if (empty($this->permissions)) {
+            $credentialPermissionList = new CredentialPermissionList();
+            $credentialPermissionList->getConditionBuilder()->add('credentialID = ?', [$this->credentialID]);
+            $credentialPermissionList->readObjects();
+
+            $permissionList = new PermissionList();
+            $permissionList->getConditionBuilder()->add('permissionID IN (?)', [array_column($credentialPermissionList->getObjects(), 'permissionID')]);
+            $permissionList->readObjects();
+            $this->permissions = array_column($permissionList->getObjects(), 'name');
+        }
+
+        return $this->permissions;
+    }
+
+    /**
+     * return true if object has the given permission otherwise false
+     *
+     * @param string $permission
+     *
+     * @return bool
+     */
+    public function hasPermission(string $permission): bool
+    {
+        if (in_array($permission, $this->getPermissions())) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * return true if object has all permissions otherwise false
+     *
+     * @param array $permissions
+     *
+     * @return bool
+     */
+    public function hasPermissions(array $permissions = []): bool
+    {
+        foreach ($permissions as $permission) {
+            if (!$this->hasPermission($permission)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

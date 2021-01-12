@@ -15,7 +15,9 @@
 		<item name="graphql.credential.details"><![CDATA[details]]></item>
 		<item name="graphql.credential.general"><![CDATA[General]]></item> 
 		<item name="graphql.credential.key"><![CDATA[Key]]></item>
-		<item name="graphql.credential.name"><![CDATA[Name]]></item> 
+		<item name="graphql.credential.name"><![CDATA[Name]]></item>
+		<item name="graphql.credential.other"><![CDATA[Other]]></item>
+		<item name="graphql.credential.permissions"><![CDATA[Permissions]]></item>
 		<item name="graphql.credential.secret"><![CDATA[Secret Key]]></item>
 		<item name="graphql.credential.secret.description"><![CDATA[Please make a note of the secret key, as it will not be displayed after submitting this form]]></item>
 		<item name="graphql.credential.token"><![CDATA[token]]></item>
@@ -25,6 +27,10 @@
 		<item name="graphql.credential.token.validUntil"><![CDATA[Valid until]]></item>
 		<item name="graphql.credential.tokens"><![CDATA[Tokens]]></item>
 		<item name="graphql.credential.view"><![CDATA[View credentials]]></item>
+	</category>
+
+	<category name="graphql.permission">
+		<item name="graphql.permission.name.article"><![CDATA[Article]]></item>
 	</category>
 
 	<category name="graphql.schema">

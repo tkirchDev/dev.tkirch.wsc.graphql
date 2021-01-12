@@ -2,11 +2,14 @@
 namespace graphql\acp\form;
 
 use graphql\data\credential\CredentialAction;
+use graphql\data\credential\CredentialList;
 use graphql\data\permission\PermissionList;
 use wcf\form\AbstractFormBuilderForm;
 use wcf\system\form\builder\container\FormContainer;
 use wcf\system\form\builder\field\MultipleSelectionFormField;
 use wcf\system\form\builder\field\TextFormField;
+use wcf\system\form\builder\field\validation\FormFieldValidationError;
+use wcf\system\form\builder\field\validation\FormFieldValidator;
 
 class CredentialAddForm extends AbstractFormBuilderForm
 {
@@ -50,7 +53,23 @@ class CredentialAddForm extends AbstractFormBuilderForm
                         ->label('graphql.credential.key')
                         ->required()
                         ->value(bin2hex(random_bytes(8)))
-                        ->maximumLength(255),
+                        ->maximumLength(255)
+                        ->addValidator(new FormFieldValidator('credentialKey', function (TextFormField $formField) {
+                            if ($formField->getValue()) {
+                                $credentialList = new CredentialList();
+                                $credentialList->readObjects();
+                                $credentialKeyList = array_column($credentialList->getObjects(), 'credentialKey');
+
+                                if (in_array($formField->getValue(), $credentialKeyList)) {
+                                    $formField->addValidationError(
+                                        new FormFieldValidationError(
+                                            'credentialKey',
+                                            'graphql.credential.key.error.alreadyExists'
+                                        )
+                                    );
+                                }
+                            }
+                        })),
                     TextFormField::create('secret')
                         ->label('graphql.credential.secret')
                         ->description('graphql.credential.secret.description')

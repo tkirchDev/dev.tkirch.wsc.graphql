@@ -15,6 +15,7 @@
 		<item name="graphql.credential.details"><![CDATA[Details]]></item>
 		<item name="graphql.credential.general"><![CDATA[Allgemein]]></item> 
 		<item name="graphql.credential.key"><![CDATA[Key]]></item>
+		<item name="graphql.credential.key.error.alreadyExists"><![CDATA[Dieser Key wird schon verwendet.]]></item>
 		<item name="graphql.credential.name"><![CDATA[Name]]></item> 
 		<item name="graphql.credential.other"><![CDATA[Sonstiges]]></item>
 		<item name="graphql.credential.permissions"><![CDATA[Berechtigungen]]></item>
@@ -31,6 +32,8 @@
 
 	<category name="graphql.permission">
 		<item name="graphql.permission.name.article"><![CDATA[Artikel]]></item>
+		<item name="graphql.permission.name.language"><![CDATA[Sprache]]></item>
+		<item name="graphql.permission.name.user"><![CDATA[Benutzer]]></item>
 	</category>
 
 	<category name="graphql.schema">

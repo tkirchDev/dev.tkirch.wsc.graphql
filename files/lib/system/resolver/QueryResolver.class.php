@@ -19,13 +19,12 @@ class QueryResolver extends AbstractResolver
     {
         $this->fieldResolvers = array_merge($this->fieldResolvers, [
             'article' => function ($value, $args, $context) {
-                CredentialUtil::checkIsAuthenticated($context, true);
+                CredentialUtil::hasPermissions($context, ['article']);
 
                 return new Article($args['id']);
             },
             'articles' => function ($value, $args, $context) {
                 CredentialUtil::hasPermissions($context, ['article']);
-                CredentialUtil::checkIsAuthenticated($context, true);
 
                 $list = new ArticleList();
                 $list->sqlOffset = $args['skip'];
@@ -35,12 +34,12 @@ class QueryResolver extends AbstractResolver
                 return $list->getObjects();
             },
             'language' => function ($value, $args, $context) {
-                #CredentialUtil::checkIsAuthenticated($context, true);
+                CredentialUtil::hasPermissions($context, ['language']);
 
                 return new Language($args['id']);
             },
             'languages' => function ($value, $args, $context) {
-                #CredentialUtil::checkIsAuthenticated($context, true);
+                CredentialUtil::hasPermissions($context, ['language']);
 
                 $list = new LanguageList();
                 $list->sqlOffset = $args['skip'];
@@ -50,12 +49,12 @@ class QueryResolver extends AbstractResolver
                 return $list->getObjects();
             },
             'user' => function ($value, $args, $context) {
-                #CredentialUtil::checkIsAuthenticated($context, true);
+                CredentialUtil::hasPermissions($context, ['user']);
 
                 return new User($args['id']);
             },
             'users' => function ($value, $args, $context) {
-                #CredentialUtil::checkIsAuthenticated($context, true);
+                CredentialUtil::hasPermissions($context, ['user']);
 
                 $list = new UserList();
                 $list->sqlOffset = $args['skip'];

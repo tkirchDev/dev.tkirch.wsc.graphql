@@ -27,6 +27,11 @@ $tables = [
             NotNullVarchar255DatabaseTableColumn::create('name'),
             NotNullVarchar255DatabaseTableColumn::create('credentialKey'),
             TextDatabaseTableColumn::create('secret'),
+        ])
+        ->indices([
+            DatabaseTableIndex::create()
+                ->type(DatabaseTableIndex::UNIQUE_TYPE)
+                ->columns(['credentialKey']),
         ]),
     DatabaseTable::create('graphql1_permission')
         ->columns([
@@ -91,5 +96,16 @@ $tables = [
 (new PermissionAction([], 'create', [
     'data' => [
         'name' => 'article',
+    ],
+]))->executeAction();
+(new PermissionAction([], 'create', [
+    'data' => [
+        'name' => 'language',
+    ],
+]))->executeAction();
+
+(new PermissionAction([], 'create', [
+    'data' => [
+        'name' => 'user',
     ],
 ]))->executeAction();

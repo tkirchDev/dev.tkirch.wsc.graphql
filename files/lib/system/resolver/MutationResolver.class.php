@@ -13,7 +13,7 @@ class MutationResolver extends AbstractResolver
     {
         $this->fieldResolvers = array_merge($this->fieldResolvers, [
             'generateToken' => function ($value, $args) {
-                return CredentialUtil::generateToken($args['key'] ?? '', $args['secret'] ?? '');
+                return CredentialUtil::generateToken($args['key'] ?? '', $args['secret'] ?? '', $args['type'] ?? '');
             },
         ]);
     }

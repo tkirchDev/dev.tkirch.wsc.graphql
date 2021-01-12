@@ -25,6 +25,10 @@
 </div>
 
 <div class="section">
+    <h1 class="sectionTitle">{lang}graphql.credential.permissions{/lang}</h1>
+</div>
+
+<div class="section">
     <h1 class="sectionTitle">{lang}graphql.credential.tokens{/lang}</h1>
     {if $credential->getTokens()|count}
         <div class="section tabularBox" id="tokenTableContainer">

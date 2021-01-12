@@ -1,8 +1,61 @@
 # dev.tkirch.wsc.graphql
 
+![GitHub](https://img.shields.io/github/license/tkirchDev/dev.tkirch.wsc.graphql?style=flat-square)
+
 Provides an extensible GraphQL schema and API for your WSC page.
 
-## Extend a resolver using event listener
+## Table of contents
+
+- [Installation](#installation)
+- [Build extension yourself](#build-extension-yourself)
+  - [Windows](#windows)
+- [Documentation](#documentation)
+  - [Send request](#send-request)
+  - [Extend a resolver](#extend-a-aresolver)
+
+## Installation
+
+Download the latest release of this version here and install the package normally via the WSC.
+
+## Build extension yourself
+
+### Windows
+
+Clone the project and execute the make.bat file. Then the package is packed so that it is ready to install.
+
+## Documentation
+
+### Send request
+
+The default server is available at `http://domain.tld/graphql/`. For general information, take a look at [GraphQL](https://graphql.org).
+
+With the following mutation you can generate a long-lived token (you create the access data for this in the acp).
+
+```GraphQL
+mutation {
+    generateToken(key: "exampleKey", secret: "exampleSecret", type:"longlife")
+}
+```
+
+The output looks then e.g. like this:
+
+```JSON
+{
+    "data": {
+        "generateToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklEIjo2LCJleHAiOjE5MjYwMDc3NjZ9.02NE6IxapsB1NY3Qf4NzC9j_baJ--Cdfc0wVH42409E"
+    }
+}
+```
+
+To authenticate themselves to a request, they set the Authorization Header (Do not forget the `Bearer ` in front of the token.). Here is an example:
+
+```JSON
+{
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklEIjo2LCJleHAiOjE5MjYwMDc3NjZ9.02NE6IxapsB1NY3Qf4NzC9j_baJ--Cdfc0wVH42409E"
+}
+```
+
+### Extend a resolver
 
 In the following example we extend the QueryResover with the field `foo` which returns `bar`.
 
@@ -17,7 +70,7 @@ Extend the `eventListener.xml` by:
 </eventlistener>
 ```
 
-`graphql\system\event\listener\FooBarListener.class.php`
+Create the file `graphql\system\event\listener\FooBarListener.class.php` with the content:
 
 ```PHP
 <?php

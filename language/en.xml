@@ -25,6 +25,7 @@
 		<item name="graphql.credential.token.createdAt"><![CDATA[Created on]]></item>
 		<item name="graphql.credential.token.type"><![CDATA[Type]]></item>
 		<item name="graphql.credential.token.type.longlife"><![CDATA[longlife token]]></item>
+		<item name="graphql.credential.token.type.shotlife"><![CDATA[Short-lived token]]></item>
 		<item name="graphql.credential.token.validUntil"><![CDATA[Valid until]]></item>
 		<item name="graphql.credential.tokens"><![CDATA[Tokens]]></item>
 		<item name="graphql.credential.view"><![CDATA[View credentials]]></item>

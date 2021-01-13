@@ -66,7 +66,7 @@ Extend the `eventListener.xml` by:
     <eventclassname>graphql\system\resolver\QueryResolver</eventclassname>
     <eventname>afterSetFieldResolvers</eventname>
     <listenerclassname>graphql\system\event\listener\FooBarListener</listenerclassname>
-	<inherit>1</inherit>
+    <inherit>1</inherit>
 </eventlistener>
 ```
 

@@ -8,7 +8,14 @@ extend type Query {
 }
 
 extend type Mutation {
-  generateToken(key: String, secret: String, type: String = "shotlife"): String
+  generateToken(key: String, secret: String, type: String = "shotlife"): Token
+}
+
+type Token {
+  value: String
+  type: String
+  validUntil: Int
+  createdAt: Int
 }
 
 type Article {

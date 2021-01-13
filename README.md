@@ -33,7 +33,9 @@ With the following mutation you can generate a long-lived token (you create the 
 
 ```GraphQL
 mutation {
-    generateToken(key: "exampleKey", secret: "exampleSecret", type:"longlife")
+    generateToken(key: "exampleKey", secret: "exampleSecret", type:"longlife") {
+        value
+    }
 }
 ```
 
@@ -42,7 +44,9 @@ The output looks then e.g. like this:
 ```JSON
 {
     "data": {
-        "generateToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklEIjo2LCJleHAiOjE5MjYwMDc3NjZ9.02NE6IxapsB1NY3Qf4NzC9j_baJ--Cdfc0wVH42409E"
+        "generateToken": {
+            "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbklEIjo2LCJleHAiOjE5MjYwMDc3NjZ9.02NE6IxapsB1NY3Qf4NzC9j_baJ--Cdfc0wVH42409E"
+        }
     }
 }
 ```

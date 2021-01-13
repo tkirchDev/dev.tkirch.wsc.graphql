@@ -45,7 +45,9 @@ class CredentialUtil
             );
             $encoded = JWT::encode($jwtPayload, SIGNATURE_SECRET);
 
-            return $encoded;
+            return array_merge($credentialToken->getData(), [
+                'value' => $encoded,
+            ]);
         } else {
             throw new AuthException('credential.invalid');
         }

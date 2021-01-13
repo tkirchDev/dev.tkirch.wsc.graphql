@@ -54,10 +54,10 @@
                                 {lang}graphql.credential.token.type.{$token->type}{/lang}
                             </td>
                             <td class="columnTitle columnValidUntil">
-                                {$token->validUntil}
+                                {@$token->validUntil|time}
                             </td>
                             <td class="columnTitle columnCreatedAt">
-                                {$token->createdAt}
+                                {@$token->createdAt|time}
                             </td>
 
                             {event name='columns'}

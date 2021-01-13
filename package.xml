@@ -36,8 +36,9 @@
 		<!-- xml -->
 		<instruction type="option"/>
 		<instruction type="acpMenu"/>
-		<instruction type="language"/>
 		<instruction type="userGroupOption"/>
+		<instruction type="cronjob"/>
+		<instruction type="language"/>
 
 		<!-- scripts -->
 		<instruction type="script" run="standalone">acp/install_dev.tkirch.wsc.graphql_0.1.0.php</instruction>

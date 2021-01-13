@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/2019/cronjob.xsd">
+	<import>
+		<cronjob name="dev.tkirch.wsc.graphql.deleteObsoleteTokens">
+			<classname>graphql\system\cronjob\DeleteObsoleteTokensCronjob</classname>
+			<description>Delete obsolete tokens.</description>
+			<description language="de">Löscht veraltete Tokens.</description>
+            <startminute>*/30</startminute>
+			<starthour>*</starthour>
+			<startdom>*</startdom>
+			<startmonth>*</startmonth>
+			<startdow>*</startdow>
+			<canbeedited>1</canbeedited>
+			<canbedisabled>1</canbedisabled>
+		</cronjob>
+	</import>
+</data>

@@ -98,6 +98,13 @@ $tables = [
         'name' => 'article',
     ],
 ]))->executeAction();
+
+(new PermissionAction([], 'create', [
+    'data' => [
+        'name' => 'category',
+    ],
+]))->executeAction();
+
 (new PermissionAction([], 'create', [
     'data' => [
         'name' => 'language',

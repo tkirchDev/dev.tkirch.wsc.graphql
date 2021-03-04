@@ -34,6 +34,7 @@ abstract class AbstractServer implements IServer
             'Query' => \graphql\system\resolver\QueryResolver::class,
             'Mutation' => \graphql\system\resolver\MutationResolver::class,
             'Article' => \graphql\system\resolver\ArticleResolver::class,
+            'Category' => \graphql\system\resolver\CategoryResolver::class,
             'User' => \graphql\system\resolver\UserResolver::class,
         ]);
 

@@ -4,6 +4,8 @@ namespace graphql\system\resolver;
 use graphql\util\CredentialUtil;
 use wcf\data\article\Article;
 use wcf\data\article\ArticleList;
+use wcf\data\category\Category;
+use wcf\data\category\CategoryList;
 use wcf\data\language\Language;
 use wcf\data\language\LanguageList;
 use wcf\data\user\User;
@@ -33,6 +35,21 @@ class QueryResolver extends AbstractResolver
 
                 return $list->getObjects();
             },
+            'category' => function ($value, $args, $context) {
+                CredentialUtil::hasPermissions($context, ['category']);
+
+                return new Category($args['id']);
+            },
+            'categories' => function ($value, $args, $context) {
+                CredentialUtil::hasPermissions($context, ['category']);
+
+                $list = new CategoryList();
+                $list->sqlOffset = $args['skip'];
+                $list->sqlLimit = $args['first'];
+                $list->readObjects();
+
+                return $list->getObjects();
+            },
             'language' => function ($value, $args, $context) {
                 CredentialUtil::hasPermissions($context, ['language']);
 
@@ -47,6 +64,9 @@ class QueryResolver extends AbstractResolver
                 $list->readObjects();
 
                 return $list->getObjects();
+            },
+            'ping' => function () {
+                return 'pong';
             },
             'user' => function ($value, $args, $context) {
                 CredentialUtil::hasPermissions($context, ['user']);

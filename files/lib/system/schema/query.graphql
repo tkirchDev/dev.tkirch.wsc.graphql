@@ -3,6 +3,7 @@ extend type Query {
   articles(first: Int = 20, skip: Int = 0): [Article]
   language(id: ID!): Language
   languages(first: Int = 20, skip: Int = 0): [Language]
+  ping: String
   user(id: ID!): User
   users(first: Int = 20, skip: Int = 0): [User]
 }
@@ -20,11 +21,33 @@ type Token {
 
 type Article {
   articleID: ID!
+  category: Category
+  # comments
+  cumulativeLikes: Int
+  enableComments: Boolean
+  hasLabels: Boolean
+  isDeleted: Boolean
+  isMultilingual: Boolean
+  publicationDate: Int
+  publicationStatus: Int
+  time: Int
   title: String!
   teaser: String
   user: User
+  views: Int
 }
 
+type Category {
+  categoryID: ID!
+  description: String
+  descriptionUseHtml: Boolean
+  isDisabled: Boolean
+  # objectTypeID
+  parent: Category
+  showOrder: Int
+  time: Int
+  title: String
+}
 type User {
   userID: ID!
   username: String!

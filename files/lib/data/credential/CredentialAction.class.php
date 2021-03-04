@@ -32,7 +32,6 @@ class CredentialAction extends AbstractDatabaseObjectAction
 
         //check if permissions was set
         if (isset($this->parameters['permissions'])) {
-
             //set permissions
             foreach ($this->parameters['permissions'] as $permissionID) {
                 CredentialPermissionEditor::create([

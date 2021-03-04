@@ -23,7 +23,7 @@ abstract class AbstractResolver implements IResolver
     /**
      * @inheritDoc
      */
-    public static function getName(): String
+    public static function getName(): string
     {
         if (!empty(static::$name)) {
             return ucfirst(static::$name);

@@ -16,15 +16,15 @@ class CredentialUtil
     /**
      * generate a new token
      *
-     * @param String $key
-     * @param String $secret
-     * @param String $type
+     * @param string $key
+     * @param string $secret
+     * @param string $type
      *
      * @throws AuthException
      *
-     * @return String
+     * @return string
      */
-    public static function generateToken(String $key, String $secret, String $type = 'shortlife')
+    public static function generateToken(string $key, string $secret, string $type = 'shortlife')
     {
         //get credential by key
         $credential = Credential::getByKey($key);
@@ -57,13 +57,13 @@ class CredentialUtil
     /**
      * check a token
      *
-     * @param String $token
+     * @param string $token
      *
      * @throws AuthException
      *
      * @return CredentialToken
      */
-    public static function checkToken(String $token)
+    public static function checkToken(string $token)
     {
         //try decode token
         try {

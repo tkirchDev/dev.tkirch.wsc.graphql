@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\acp\form;
 
 use graphql\data\credential\CredentialAction;

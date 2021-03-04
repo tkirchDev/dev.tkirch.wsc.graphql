@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\exception;
 
 use GraphQL\Error\ClientAware;

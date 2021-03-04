@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\credential;
 
 use graphql\data\credential\permission\CredentialPermissionEditor;
@@ -31,18 +32,15 @@ class CredentialAction extends AbstractDatabaseObjectAction
 
         //check if permissions was set
         if (isset($this->parameters['permissions'])) {
-
             //set permissions
             foreach ($this->parameters['permissions'] as $permissionID) {
                 CredentialPermissionEditor::create([
                     'permissionID' => $permissionID,
                     'credentialID' => $credential->credentialID,
                 ]);
-
             }
         }
 
         return $credential;
     }
-
 }

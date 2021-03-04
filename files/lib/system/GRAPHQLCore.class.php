@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system;
 
 use wcf\system\application\AbstractApplication;

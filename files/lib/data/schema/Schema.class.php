@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\schema;
 
 require_once WCF_DIR . 'lib/system/api/graphql-php/autoload.php';

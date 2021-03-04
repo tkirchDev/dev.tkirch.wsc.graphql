@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\schema;
 
 use wcf\data\DatabaseObjectEditor;

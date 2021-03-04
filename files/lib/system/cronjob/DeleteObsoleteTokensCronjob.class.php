@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\cronjob;
 
 use wcf\data\cronjob\Cronjob;

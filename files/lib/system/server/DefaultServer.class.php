@@ -1,7 +1,9 @@
 <?php
+
 namespace graphql\system\server;
 
 require_once WCF_DIR . 'lib/system/api/graphql-php/autoload.php';
+
 use graphql\data\schema\SchemaList;
 use GraphQL\Type\Schema;
 use GraphQL\Utils\BuildSchema;

@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\resolver;
 
 class CategoryResolver extends AbstractResolver

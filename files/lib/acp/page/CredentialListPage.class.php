@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\acp\page;
 
 use graphql\data\credential\CredentialList;

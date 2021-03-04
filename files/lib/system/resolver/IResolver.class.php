@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\resolver;
 
 interface IResolver
@@ -8,7 +9,7 @@ interface IResolver
      *
      * @return String
      */
-    public static function getName(): String;
+    public static function getName(): string;
 
     /**
      * invoke function for graphql resolver

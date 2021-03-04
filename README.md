@@ -1,6 +1,7 @@
 # dev.tkirch.wsc.graphql
 
-![GitHub](https://img.shields.io/github/license/tkirchDev/dev.tkirch.wsc.graphql?style=flat-square)
+[![GitHub](https://img.shields.io/github/license/tkirchDev/dev.tkirch.wsc.graphql)](https://github.com/tkirchDev/dev.tkirch.wsc.graphql/LICENSE)
+[![PHPCS check](https://github.com/tkirchDev/dev.tkirch.wsc.graphql/actions/workflows/codestyle.yml/badge.svg)](https://github.com/tkirchDev/dev.tkirch.wsc.graphql/actions/workflows/codestyle.yml)
 
 Provides an extensible GraphQL schema and API for your WSC page.
 

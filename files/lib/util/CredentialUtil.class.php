@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\util;
 
 require_once WCF_DIR . 'lib/system/api/php-jwt/autoload.php';
@@ -137,6 +138,5 @@ class CredentialUtil
         } else {
             throw new AuthException('credential.not.permitted');
         }
-
     }
 }

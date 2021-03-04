@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\server;
 
 use GraphQL\Error\DebugFlag;

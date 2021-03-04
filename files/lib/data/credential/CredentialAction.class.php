@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\credential;
 
 use graphql\data\credential\permission\CredentialPermissionEditor;
@@ -38,11 +39,9 @@ class CredentialAction extends AbstractDatabaseObjectAction
                     'permissionID' => $permissionID,
                     'credentialID' => $credential->credentialID,
                 ]);
-
             }
         }
 
         return $credential;
     }
-
 }

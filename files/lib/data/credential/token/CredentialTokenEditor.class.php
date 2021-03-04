@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\credential\token;
 
 use wcf\data\DatabaseObjectEditor;

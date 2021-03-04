@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\page;
 
 use GraphQL\GraphQL;

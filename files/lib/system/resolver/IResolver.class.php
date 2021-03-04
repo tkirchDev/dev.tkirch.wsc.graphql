@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\system\resolver;
 
 interface IResolver

@@ -1,4 +1,5 @@
 <?php
+
 namespace graphql\data\permission;
 
 use wcf\data\DatabaseObjectList;

@@ -31,7 +31,6 @@ class CredentialUtil
 
         //check secret
         if ($credential->credentialID && $credential->checkSecret($secret)) {
-
             $credentialTokenAction = new CredentialTokenAction([], 'create', [
                 'data' => [
                     'credentialID' => $credential->credentialID,

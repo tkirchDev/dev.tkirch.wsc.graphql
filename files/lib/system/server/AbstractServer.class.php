@@ -45,7 +45,7 @@ abstract class AbstractServer implements IServer
         // get type config decorator
         $this->typeConfigDecorator = function ($typeConfig, $typeDefinitionNode) {
             if (array_key_exists($typeConfig['name'], $this->resolvers)) {
-                $typeConfig['resolveField'] = (new $this->resolvers[$typeConfig['name']]);
+                $typeConfig['resolveField'] = new $this->resolvers[$typeConfig['name']]();
             }
             return $typeConfig;
         };

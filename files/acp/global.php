@@ -1,4 +1,5 @@
 <?php
+
 // define paths
 define('RELATIVE_GRAPHQL_DIR', '../');
 
